@@ -384,7 +384,7 @@ class InteractivePlotMixin:
             ivcc_filtered_by_cl = filter_data(ivcc_df, 'Cell Line', cell_line)
             ivcc_filtered_by_id = filter_data(ivcc_filtered_by_cl, 'ID', run_ids)
 
-            fig = px.line(ivcc_filtered_by_id, x=x_axis, y='value', title='IVCC', color=color_2, line_dash=line_2, symbol=symbol_2)
+            fig = px.line(ivcc_filtered_by_id, x=x_axis, y='value', title='Integral Viable Cell Concentration', color=color_2, line_dash=line_2, symbol=symbol_2)
             fig.update_yaxes(title_text=f"IVCC {ivcc_filtered_by_id['unit'].iat[0]}")
             figures['figure3'] = fig
 
@@ -528,7 +528,7 @@ def rename_yaxis(df, fig, profile):
 
         if profile=='cumulative':
             state = df[mask]['state'].iat[0]
-            yaxis_titles[name] = f"{name} {state} {unit}"
+            yaxis_titles[name] = f"Cumulative {name} {state} {unit}"
         elif profile=='spRate':
             yaxis_titles[name] = f"q{name} {unit}"
         else:

@@ -27,18 +27,18 @@ def cell_profile_dropdown(options):
         dcc.Dropdown(id='cell-profile-dropdown', 
                      options=options, 
                      value=[],
-                     placeholder='Select Profiles',
+                     placeholder='Select Cell Profiles',
                      multi=True,)],
         style={'width': '40%', 'display': 'inline-block', 'margin-right': '20px'},
         )
 
 def profile_dropdown(options):
     return html.Div(children=[
-        html.Div("Profile: ", style={"margin-right": "10px", "font-weight": "bold"}),
+        html.Div("Species Profile: ", style={"margin-right": "10px", "font-weight": "bold"}),
         dcc.Dropdown(id='profile-dropdown', 
                      options=options, 
                      value=[],
-                     placeholder='Select Profiles',
+                     placeholder='Select Species Profiles',
                      multi=True,)],
         style={'width': '40%', 'display': 'inline-block'},
         )
