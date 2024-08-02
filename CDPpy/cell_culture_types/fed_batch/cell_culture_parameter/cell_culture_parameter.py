@@ -38,7 +38,6 @@ class FedBatchParameters:
             self._rolling_polynomial_degree = None
             self._rolling_polynomial_window = None
             self._rolling_window_polynomial = False
-        print(self._rolling_window_polynomial)
         
 
     @property
