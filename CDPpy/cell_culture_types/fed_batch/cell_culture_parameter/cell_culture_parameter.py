@@ -4,7 +4,7 @@ class FedBatchParameters:
                  cell_line_name:str, 
                  use_feed_concentration:bool, 
                  use_concentration_after_feed:bool, 
-                 regression_method=None, 
+                 regression_method=['polynomial', 'rolling_window_polynomial'], 
                  polynomial_degreee=None,
                  rolling_polynomial_degree=None, rolling_polynomial_window=None) -> None:
         '''
@@ -26,18 +26,20 @@ class FedBatchParameters:
 
         if 'rolling_window_polynomial' in regression_method:
             self._rolling_window_polynomial = True
-            if rolling_polynomial_degree:
-                self._rolling_polynomial_degree = rolling_polynomial_degree
-            else:
-                self._rolling_polynomial_degree = 3
-            if rolling_polynomial_window:
-                self._rolling_polynomial_window = rolling_polynomial_window
-            else:
-                self._rolling_polynomial_window = 6
+            # if rolling_polynomial_degree:
+            self._rolling_polynomial_degree = rolling_polynomial_degree
+            # else:
+            #     self._rolling_polynomial_degree = 3
+            # if rolling_polynomial_window:
+            self._rolling_polynomial_window = rolling_polynomial_window
+            # else:
+            #     self._rolling_polynomial_window = 6
         else:
             self._rolling_polynomial_degree = None
             self._rolling_polynomial_window = None
             self._rolling_window_polynomial = False
+        print(self._rolling_window_polynomial)
+        
 
     @property
     def cell_line_name(self):
@@ -84,7 +86,7 @@ class FedBatchParameters:
         return self._rolling_polynomial_degree
     
     @rolling_polynomial_degree.setter
-    def rolling_window_polynomial(self, degree):
+    def rolling_polynomial_degree(self, degree):
         self._rolling_polynomial_degree = degree
     
     @property
@@ -92,7 +94,7 @@ class FedBatchParameters:
         return self._rolling_polynomial_window
     
     @rolling_polynomial_window.setter
-    def rolling_window_polynomial(self, window):
+    def rolling_polynomial_window(self, window):
         self._rolling_polynomial_window = window
 
     def __repr__(self) -> str:

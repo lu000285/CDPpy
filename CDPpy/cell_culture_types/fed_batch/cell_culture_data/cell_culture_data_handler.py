@@ -126,7 +126,6 @@ class FedBatchCellCultureDataHandler(CellCultureDataHandler, GetterMixin, Intera
             # post-porcessing-polynomial regression
             if param.polynomial:
                 cell_line_data_handler.polynomial()
-
             # post-processing-rolling window polynomial regression
             if param.rolling_window_polynomial:
                 deg = param.rolling_polynomial_degree

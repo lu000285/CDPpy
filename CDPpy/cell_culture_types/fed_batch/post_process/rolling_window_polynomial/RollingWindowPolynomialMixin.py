@@ -7,7 +7,7 @@ from CDPpy.constants.constants import RUN_TIME_HOUR_COLUMN, RUN_TIME_DAY_COLUMN,
 
 class RollingWindowPolynomialMixin():
     ''''''
-    def rolling_window_polynomial(self, degree=3, window=6):
+    def rolling_window_polynomial(self, degree=None, window=None):
         '''
         '''
         species = self.get_species('all')
@@ -30,6 +30,13 @@ class RollingWindowPolynomialMixin():
         run_time = pd.DataFrame(data={RUN_TIME_DAY_COLUMN: t_day,
                                                 RUN_TIME_HOUR_COLUMN: t_hour})
         
+        if window == None:
+            window = round(t_day.size/3.0)
+            if window < 6:
+                window = 6
+        if degree == None:
+            degree = 3
+
         # initialize df for logging
         sp_rate_dataframe = run_time.copy()
 
